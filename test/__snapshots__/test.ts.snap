@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ligscribe CLI should create files matching snapshots 1`] = `
+"<!DOCTYPE html>
+<html>
+	<head>
+		<title>icons</title>
+		<style>
+			@import url('icons.css');
+			
+			html, body { margin: 0; padding: 0; font-size: 12px; }
+			body { background: #efefef; padding: 2em; font-family: Helvetica, Arial, sans-serif;  }
+			h1 { border-bottom: 2px solid darkslategray; color: darkslategray; font-weight: normal; font-size: 2em }
+			.box { display: inline-block; border: 2px solid darkslategray; width: 120px; margin: .5em; box-shadow: .4em .4em .4em rgba(0,0,0,.4) }
+			.box__glyph { overflow: hidden; font-size: 60px; line-height: 100px; text-align: center; }
+			.box__label { background: darkslategray; padding: .4em; text-align: center; color: white; }
+		</style>
+	</head>
+	<body>
+	
+	<h1>icons</h1>
+
+    <div class="box">
+        <div class="box__glyph icons">arrow_left</div>
+        <div class="box__label">arrow_left</div>
+    </div><div class="box">
+        <div class="box__glyph icons">www</div>
+        <div class="box__label">www</div>
+    </div>
+
+	</body>
+</html>
+"
+`;
+
+exports[`ligscribe CLI should create files matching snapshots 2`] = `
+"@font-face {
+    font-family: 'icons';
+    src: url('icons.woff2') format('woff2'),
+         url('icons.woff') format('woff'),
+         url('icons.ttf') format('truetype'),
+         url('icons.svg#icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.icons {
+    /* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icons' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	
+	/* Enable Ligatures ================ */
+	letter-spacing: 0;
+	-webkit-font-feature-settings: "liga";
+	-moz-font-feature-settings: "liga=1";
+	-moz-font-feature-settings: "liga";
+	-ms-font-feature-settings: "liga" 1;
+	font-feature-settings: "liga";
+	-webkit-font-variant-ligatures: discretionary-ligatures;
+	font-variant-ligatures: discretionary-ligatures;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+"
+`;
+
+exports[`ligscribe CLI should create files matching snapshots 3`] = `
+"<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <font id="icons" horiz-adv-x="1000">
+    <font-face font-family="icons"
+      units-per-em="1000" ascent="1000"
+      descent="0" />
+    <missing-glyph horiz-adv-x="0" />
+    <glyph glyph-name="arrow_left"
+      unicode="&#x61;&#x72;&#x72;&#x6F;&#x77;&#x5F;&#x6C;&#x65;&#x66;&#x74;"
+      horiz-adv-x="1000" d="M781.3125 500C781.3125 482.74375 767.334375 468.75 750.0625 468.75H308.35L463.4406250000001 236.084375C473.021875 221.725 469.1468750000001 202.315625 454.775 192.75C449.43125 189.19375 443.421875 187.5 437.46875 187.5C427.3687500000001 187.5 417.4500000000001 192.3843750000001 411.4375 201.415625L212.371875 500L411.4375 798.584375C420.990625 812.959375 440.3375 816.85 454.771875 807.25C469.146875 797.68125 473.021875 778.2750000000001 463.4375 763.915625L308.35 531.25H750.0625C767.334375 531.25 781.3125 517.2562499999999 781.3125 500z" />
+    <glyph glyph-name="www"
+      unicode="&#x77;&#x77;&#x77;"
+      horiz-adv-x="1000" d="" />
+  </font>
+</defs>
+</svg>
+"
+`;

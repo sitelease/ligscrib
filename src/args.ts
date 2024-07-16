@@ -1,23 +1,23 @@
-import * as yargs from 'yargs';
-import * as pkg from '../package.json';
+import yargs from 'yargs';
+import pkg from '../package.json';
 
 export const ALLOWED_TYPES = new Set(['svg', 'ttf', 'woff', 'woff2']);
 
-export function getArgs(argv = process.argv) : { inputs: string[], outDir: string, name: string, verbose: boolean, css: boolean, scss: boolean, example: boolean, types: Set<string> } {
-    const args = yargs
+export async function getArgs(argv = process.argv) : Promise<{ inputs: string[], outDir: string, name: string, verbose?: boolean, css: boolean, scss: boolean, example?: boolean, types: Set<string> }> {
+    const args = await yargs
         .version(pkg.version)
         
-        .alias('o', [ 'out-dir', 'outDir' ])
-        .describe('o', 'Output directory')
-        .default('o', '.')
+        .alias('outDir', [ 'out-dir', 'o' ])
+        .describe('outDir', 'Output directory')
+        .default('outDir', '.')
         
-        .alias('n', 'name')
-        .describe('n', 'Font file name (w/o file extension)')
-        .default('n', 'icons')
+        .alias('name', 'n')
+        .describe('name', 'Font file name (w/o file extension)')
+        .default('name', 'icons')
         
-        .alias('t', 'types')
-        .describe('t', 'Created font file types')
-        .default('t', 'svg,ttf,woff,woff2')
+        .alias('types', 't')
+        .describe('types', 'Created font file types')
+        .default('types', 'svg,ttf,woff,woff2')
         
         .boolean('css')
         .describe('css', 'Create a CSS file (--no-css)')
@@ -27,13 +27,13 @@ export function getArgs(argv = process.argv) : { inputs: string[], outDir: strin
         .describe('scss', 'Create a SCSS file')
         .default('scss', false)
         
-        .alias('e', 'example')
-        .boolean('e')
-        .describe('e', 'Create a HTML example file')
+        .alias('example', 'e')
+        .boolean('example')
+        .describe('example', 'Create a HTML example file')
         
-        .alias('v', 'verbose')
-        .boolean('v')
-        .describe('v', 'Verbose output')
+        .alias('verbose', 'v')
+        .boolean('verbose')
+        .describe('verbose', 'Verbose output')
         
         .usage('\n  Usage: ligscrib [options] <globs...>')
         .demandCommand(1)
@@ -41,7 +41,7 @@ export function getArgs(argv = process.argv) : { inputs: string[], outDir: strin
         
         .parse(argv.slice(2));
     
-    const types = new Set<string>((args.types as string).split(/,/));
+    const types = new Set<string>(args.types.split(/,/));
     
     types.forEach(type => {
         if(!ALLOWED_TYPES.has(type)) {
@@ -51,12 +51,12 @@ export function getArgs(argv = process.argv) : { inputs: string[], outDir: strin
     
     return {
         inputs: args._.map(String),
-        outDir: args.outDir as string,
-        name: args.name as string,
-        css: args.css as boolean,
-        scss: args.scss as boolean,
-        example: args.example as boolean,
-        verbose: args.verbose as boolean,
+        outDir: args.outDir,
+        name: args.name,
+        css: args.css,
+        scss: args.scss,
+        example: args.example,
+        verbose: args.verbose,
         types
     };
 }

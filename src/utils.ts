@@ -1,4 +1,4 @@
-import * as glob from 'glob-promise';
+import { glob } from 'glob';
 
 export async function resolveInputGlobs(inputs : string[]) : Promise<string[]> {
     const nlist : string[][] = await Promise.all(
