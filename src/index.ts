@@ -142,7 +142,7 @@ export async function main(argv = process.argv) {
         console.log();
         console.log('\u2714  Done'.green);
         
-    } catch(e) {
+    } catch(e: any) {
         console.error(e.message || e);
         process.exit(1);
     }
