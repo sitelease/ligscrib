@@ -1,5 +1,4 @@
 // import globals
-import 'source-map-support/register';
 import 'colors';
 
 // import platform
@@ -8,7 +7,8 @@ import * as path from 'path';
 // import packages
 import SvgIcons2SvgFont from 'svgicons2svgfont';
 import { WritableStreamBuffer } from 'stream-buffers';
-import fs from 'fs-extra';
+import fs from 'node:fs';
+import fsp from 'node:fs/promises';
 
 // import sources
 import { getArgs } from './args';
@@ -89,7 +89,7 @@ export async function main(argv = process.argv) {
         await done;
         log('SVG Font created');
         
-        await fs.mkdirp(args.outDir);
+        await fsp.mkdir(args.outDir, { recursive: true });
         const svg = svgStream.getContents();
 
         if(!svg) {
@@ -100,42 +100,42 @@ export async function main(argv = process.argv) {
         
         if(args.types.has('svg')) {
             rlog('Write svg... ');
-            await fs.writeFile(path.join(args.outDir, `${args.name}.svg`), svg);
+            await fsp.writeFile(path.join(args.outDir, `${args.name}.svg`), svg);
             rlog('\u2714\n'.green);
         }
         
         if(args.types.has('ttf')) {
             rlog('Write ttf... ');
-            await fs.writeFile(path.join(args.outDir, `${args.name}.ttf`), Buffer.from(ttf));
+            await fsp.writeFile(path.join(args.outDir, `${args.name}.ttf`), Buffer.from(ttf));
             rlog('\u2714\n'.green);
         }
         if(args.types.has('woff')) {
             rlog('Write woff... ');
-            await fs.writeFile(path.join(args.outDir, `${args.name}.woff`), convertTtf2Woff(ttf));
+            await fsp.writeFile(path.join(args.outDir, `${args.name}.woff`), convertTtf2Woff(ttf));
             rlog('\u2714\n'.green);
         }
     
         if(args.types.has('woff2')) {
             rlog('Write woff2... ');
-            await fs.writeFile(path.join(args.outDir, `${args.name}.woff2`), convertTtf2Woff2(Buffer.from(ttf)));
+            await fsp.writeFile(path.join(args.outDir, `${args.name}.woff2`), convertTtf2Woff2(Buffer.from(ttf)));
             rlog('\u2714\n'.green);
         }
         
         if(args.css || args.example) {
             rlog('Write css... ');
-            await fs.writeFile(path.join(args.outDir, `${args.name}.css`), css(args.name, args.types));
+            await fsp.writeFile(path.join(args.outDir, `${args.name}.css`), css(args.name, args.types));
             rlog('\u2714\n'.green);
         }
         
         if(args.scss) {
             rlog('Write scss... ');
-            await fs.writeFile(path.join(args.outDir, `${args.name}.scss`), scss(args.name));
+            await fsp.writeFile(path.join(args.outDir, `${args.name}.scss`), scss(args.name));
             rlog('\u2714\n'.green);
         }
     
         if(args.example) {
             rlog('Write html... ');
-            await fs.writeFile(path.join(args.outDir, `example.html`), html(args.name, icons));
+            await fsp.writeFile(path.join(args.outDir, `example.html`), html(args.name, icons));
             rlog('\u2714\n'.green);
         }
         

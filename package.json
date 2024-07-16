@@ -29,32 +29,28 @@
     "publish-latest": "npm run publish-latest-only && npm dist-tag add @neoskop/ligscrib@`jq '.version' package.json -r` next"
   },
   "devDependencies": {
-    "@types/node": "20.14.10",
-    "@types/source-map-support": "0.5.10",
-    "@types/fs-extra": "11.0.4",
-    "@types/stream-buffers": "3.0.7",
-    "@types/yargs": "17.0.32",
     "@types/fontkit": "2.0.7",
+    "@types/jest": "29.5.12",
+    "@types/node": "20.14.10",
+    "@types/stream-buffers": "3.0.7",
+    "@types/svgicons2svgfont": "10.0.5",
     "@types/ttf2woff": "2.0.4",
     "@types/ttf2woff2": "2.0.2",
-    "@types/svgicons2svgfont": "10.0.5",
-    "typescript": "5.5.3",
+    "@types/yargs": "17.0.32",
     "fontkit": "2.0.2",
-    "tslib": "2.6.3"
+    "jest": "29.7.0",
+    "ts-jest": "29.2.2",
+    "tslib": "2.6.3",
+    "typescript": "5.5.3"
   },
   "dependencies": {
     "colors": "1.4.0",
-    "fs-extra": "11.2.0",
     "glob": "11.0.0",
-    "source-map-support": "0.5.21",
     "stream-buffers": "3.0.3",
     "svg2ttf": "6.0.3",
     "svgicons2svgfont": "12.0.0",
     "ttf2woff": "3.0.0",
     "ttf2woff2": "5.0.0",
-    "yargs": "17.7.2",
-    "jest": "29.7.0",
-    "ts-jest": "29.2.2",
-    "@types/jest": "29.5.12"
+    "yargs": "17.7.2"
   }
 }
