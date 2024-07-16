@@ -6,9 +6,9 @@ import 'colors';
 import * as path from 'path';
 
 // import packages
-import * as SvgIcons2SvgFont from 'svgicons2svgfont';
+import SvgIcons2SvgFont from 'svgicons2svgfont';
 import { WritableStreamBuffer } from 'stream-buffers';
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 
 // import sources
 import { getArgs } from './args';
@@ -27,7 +27,7 @@ export * from './utils';
 
 export async function main(argv = process.argv) {
     try {
-        const args = getArgs(argv);
+        const args = await getArgs(argv);
         const log = args.verbose ? (...logs : any[]) => console.log(...logs) : () => {};
         const rlog = args.verbose ? (str : string) => process.stdout.write(str) : (_s : string) => {};
         
@@ -106,7 +106,7 @@ export async function main(argv = process.argv) {
         
         if(args.types.has('ttf')) {
             rlog('Write ttf... ');
-            await fs.writeFile(path.join(args.outDir, `${args.name}.ttf`), ttf);
+            await fs.writeFile(path.join(args.outDir, `${args.name}.ttf`), Buffer.from(ttf));
             rlog('\u2714\n'.green);
         }
         if(args.types.has('woff')) {
@@ -117,7 +117,7 @@ export async function main(argv = process.argv) {
     
         if(args.types.has('woff2')) {
             rlog('Write woff2... ');
-            await fs.writeFile(path.join(args.outDir, `${args.name}.woff2`), convertTtf2Woff2(ttf));
+            await fs.writeFile(path.join(args.outDir, `${args.name}.woff2`), convertTtf2Woff2(Buffer.from(ttf)));
             rlog('\u2714\n'.green);
         }
         

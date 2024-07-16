@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
-import * as path from 'node:path';
-import * as fs from 'node:fs';
-import * as fontkit from 'fontkit';
+import path from 'node:path';
+import fontkit from 'fontkit';
+import fs from 'fs-extra';
 
 const BIN = path.resolve(__dirname, '../bin/ligscrib.js');
 
@@ -9,6 +9,7 @@ describe('ligscribe CLI', () => {
     let output: string;
 
     beforeAll(() => {
+        fs.removeSync(`${__dirname}/output`);
         output = stripAnsi(
             execSync(`${BIN} --out-dir output --example source/*.svg`, {
             cwd: __dirname,
