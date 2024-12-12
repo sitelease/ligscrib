@@ -3,7 +3,7 @@ import pkg from '../package.json';
 
 export const ALLOWED_TYPES = new Set(['svg', 'ttf', 'woff', 'woff2']);
 
-export async function getArgs(argv = process.argv) : Promise<{ inputs: string[], outDir: string, name: string, verbose?: boolean, css: boolean, scss: boolean, example?: boolean, types: Set<string> }> {
+export async function getArgs(argv = process.argv) : Promise<{ inputs: string[], outDir: string, name: string, prefix: string[], verbose?: boolean, css: boolean, scss: boolean, example?: boolean, faIconClasses?: boolean, faUtilityClasses?: boolean, types: Set<string> }> {
     const args = await yargs
         .version(pkg.version)
         
@@ -30,6 +30,18 @@ export async function getArgs(argv = process.argv) : Promise<{ inputs: string[],
         .alias('example', 'e')
         .boolean('example')
         .describe('example', 'Create a HTML example file')
+                
+        .alias('faIconClasses', ['fa-icon-classes', 'f'])
+        .boolean('faIconClasses')
+        .describe('faIconClasses', 'Creates a "fa-" css class for each icon and adds base font awesome classes')
+
+        .alias('faUtilityClasses', ['fa-utility-classes', 'u'])
+        .boolean('faUtilityClasses')
+        .describe('faUtilityClasses', 'Adds font awesome utility classes to output stylsheet. Pair with "-f"')
+        
+        .alias('prefix', 'p')
+        .describe('prefix', 'An optional "fa-" like prefix to add to each icon class. Pair with "-f"')
+        .default('prefix', '.')
         
         .alias('verbose', 'v')
         .boolean('verbose')
@@ -56,6 +68,9 @@ export async function getArgs(argv = process.argv) : Promise<{ inputs: string[],
         css: args.css,
         scss: args.scss,
         example: args.example,
+        faIconClasses: args.faIconClasses,
+        faUtilityClasses: args.faUtilityClasses,
+        prefix: args.prefix,
         verbose: args.verbose,
         types
     };
