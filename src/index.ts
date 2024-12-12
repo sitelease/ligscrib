@@ -135,7 +135,7 @@ export async function main(argv = process.argv) {
     
         if(args.example) {
             rlog('Write html... ');
-            await fsp.writeFile(path.join(args.outDir, `demo.html`), html(args.name, icons, args.prefix, args.faIconClasses));
+            await fsp.writeFile(path.join(args.outDir, `demo.html`), html(args.name, icons, args.prefix, args.faIconClasses, args.faUtilityClasses));
             rlog('\u2714\n'.green);
         }
         

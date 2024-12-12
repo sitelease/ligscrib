@@ -52,18 +52,18 @@ export function css(name : string, types : Set<string>, icons : Set<string>, pre
 	-moz-osx-font-smoothing: grayscale;  
 }
 
-${faCompatibility ? `
+.${prefix}::before${faCompatibility ? `,
 .fas::before,
 .far::before,
 .fab::before,
 .fa-solid::before,
 .fa-regular::before,
 .fa-brands::before,
-.fa::before {
+.fa::before` : ''} {
   content: var(--i);
-}` : ''}
+}
 
-${faCompatibility && faUtility ? `
+${faUtility ? `
 /* FA Utility Classes */
 .fa-1x {
   font-size: 1em; }
@@ -352,9 +352,7 @@ ${faCompatibility && faUtility ? `
 .fa-inverse {
   color: var(--fa-inverse, #fff); }
 ` : ''}
-
 /* Icon Classes */
-
 ${faCompatibility ? Array.from(icons).map(icon => `
     .fa-${icon}:before, .${prefix}-${icon}:before {
         --i: "${icon}";

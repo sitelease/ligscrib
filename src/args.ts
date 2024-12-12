@@ -33,15 +33,15 @@ export async function getArgs(argv = process.argv) : Promise<{ inputs: string[],
                 
         .alias('faIconClasses', ['fa-icon-classes', 'f'])
         .boolean('faIconClasses')
-        .describe('faIconClasses', 'Creates a "fa-" css class for each icon and adds base font awesome classes')
+        .describe('faIconClasses', 'Basic Font Awesome icon class output')
 
         .alias('faUtilityClasses', ['fa-utility-classes', 'u'])
         .boolean('faUtilityClasses')
-        .describe('faUtilityClasses', 'Adds font awesome utility classes to output stylsheet. Pair with "-f"')
+        .describe('faUtilityClasses', 'Font Awesome utility class output')
         
         .alias('prefix', 'p')
-        .describe('prefix', 'An optional "fa-" like prefix to add to each icon class. Pair with "-f"')
-        .default('prefix', '.')
+        .describe('prefix', 'Prefix to add to each icon class')
+        .default('prefix', 'si')
         
         .alias('verbose', 'v')
         .boolean('verbose')

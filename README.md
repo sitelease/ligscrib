@@ -22,17 +22,21 @@ $ ligscrib --help
   Usage: ligscrib [options] <globs...>
 
 Options:
-  --help                        Show help                                                       [boolean]
-  --version                     Show version number                                             [boolean]
-  -o, --out-dir, --outDir       Output directory                                           [default: "."]
-  -n, --name                    Font file name (w/o file extension)                    [default: "icons"]
-  -t, --types                   Created font file types                   [default: "svg,ttf,woff,woff2"]
-  --css                         Create a CSS file (--no-css)                    [boolean] [default: true]
-  -e, --example                 Create a HTML example file                                      [boolean]
-  -p, --prefix                  An optional "fa-" like prefix to add to each icon class         [boolean]
-  -u, --fa-utility-classes      Adds a 'fa-' class for each icon and base FA classes            [boolean]
-  -f, --fa-icon-classes         Like -p but also adds font awesome utility classes              [boolean]
-  -v, --verbose                 Verbose output                                                  [boolean]
+      --help                                    Show help                                  [boolean]
+      --version                                 Show version number                        [boolean]
+  -o, --outDir, --out-dir                       Output directory                      [default: "."]
+  -n, --name                                    Font file name (w/o file extension)
+                                                                                  [default: "icons"]
+  -t, --types                                   Created font file types
+                                                                     [default: "svg,ttf,woff,woff2"]
+      --css                                     Create a CSS file (--no-css)
+                                                                           [boolean] [default: true]
+      --scss                                    Create a SCSS file        [boolean] [default: false]
+  -e, --example                                 Create a HTML example file                 [boolean]
+  -f, --faIconClasses, --fa-icon-classes        Basic Font Awesome icon class output       [boolean]
+  -u, --faUtilityClasses, --fa-utility-classes  Font Awesome utility class output          [boolean]
+  -p, --prefix                                  Prefix to add to each icon class     [default: "si"]
+  -v, --verbose                                 Verbose output                             [boolean]
 ```
 
 ### Example
