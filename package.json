@@ -1,13 +1,14 @@
 {
-  "name": "@neoskop/ligscrib",
+  "name": "@sitelease/ligscrib",
   "version": "2.1.0",
-  "description": "Ligature icon font generator",
+  "description": "Ligature icon font generator with font awesome compatibility",
   "keywords": [
     "icon",
     "icons",
     "ligature",
     "ligatures",
     "font",
+    "awesome",
     "fonts",
     "generator",
     "writer",
@@ -18,15 +19,15 @@
   },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "repository": "git@github.com:neoskop/ligscrib.git",
-  "author": "Mark Wecke <wecke@neoskop.de>",
+  "repository": "git@github.com:sitelease/ligscrib.git",
+  "author": "Benjamin Blake <ben@sitelease.ca>",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
     "test": "npm run build && jest",
     "publish-next": "npm run build && npm publish --tag next",
     "publish-latest-only": "npm run build && npm publish",
-    "publish-latest": "npm run publish-latest-only && npm dist-tag add @neoskop/ligscrib@`jq '.version' package.json -r` next"
+    "publish-latest": "npm run publish-latest-only && npm dist-tag add @sitelease/ligscrib@`jq '.version' package.json -r` next"
   },
   "devDependencies": {
     "@types/fontkit": "2.0.7",

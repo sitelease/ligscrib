@@ -3,7 +3,7 @@ import pkg from '../package.json';
 
 export const ALLOWED_TYPES = new Set(['svg', 'ttf', 'woff', 'woff2']);
 
-export async function getArgs(argv = process.argv) : Promise<{ inputs: string[], outDir: string, name: string, prefix: string[], verbose?: boolean, css: boolean, scss: boolean, example?: boolean, faIconClasses?: boolean, faUtilityClasses?: boolean, types: Set<string> }> {
+export async function getArgs(argv = process.argv) : Promise<{ inputs: string[], outDir: string, name: string, prefix: string, verbose?: boolean, css: boolean, scss: boolean, example?: boolean, faIconClasses?: boolean, faUtilityClasses?: boolean, types: Set<string> }> {
     const args = await yargs
         .version(pkg.version)
         

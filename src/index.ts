@@ -123,7 +123,7 @@ export async function main(argv = process.argv) {
         
         if(args.css || args.example) {
             rlog('Write css... ');
-            await fsp.writeFile(path.join(args.outDir, `${args.name}.css`), css(args.name, args.types));
+            await fsp.writeFile(path.join(args.outDir, `${args.name}.css`), css(args.name, args.types, icons, args.prefix, args.faIconClasses, args.faUtilityClasses));
             rlog('\u2714\n'.green);
         }
         
@@ -135,7 +135,7 @@ export async function main(argv = process.argv) {
     
         if(args.example) {
             rlog('Write html... ');
-            await fsp.writeFile(path.join(args.outDir, `example.html`), html(args.name, icons));
+            await fsp.writeFile(path.join(args.outDir, `demo.html`), html(args.name, icons, args.prefix, args.faIconClasses));
             rlog('\u2714\n'.green);
         }
         

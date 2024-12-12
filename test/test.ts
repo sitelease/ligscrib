@@ -24,7 +24,7 @@ describe('ligscribe CLI', () => {
 
     it('should create files matching snapshots', () => {
         expect(
-            fs.readFileSync(`${__dirname}/output/example.html`, { encoding: 'utf-8' })
+            fs.readFileSync(`${__dirname}/output/demo.html`, { encoding: 'utf-8' })
         ).toMatchSnapshot();
         expect(
             fs.readFileSync(`${__dirname}/output/icons.css`, { encoding: 'utf-8' })
