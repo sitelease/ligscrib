@@ -23,9 +23,9 @@ export function html(name : string, icons : Set<string>, prefix : string, faComp
 	<div class="container">
     ${Array.from(icons).map(icon => `<div class="box">
         <div class="box__glyph ${prefix}">
-			<i class="${prefix} ${prefix}-${icon}"></i>
+			<i class="${prefix} ${prefix}-${icon.replace(/_/g, "-")}"></i>
 		</div>
-        <div class="box__label">${prefix} ${prefix}-${icon}</div>
+        <div class="box__label">${prefix} ${prefix}-${icon.replace(/_/g, "-")}</div>
     </div>`).join('')}
 	</div>
 	
@@ -34,9 +34,9 @@ export function html(name : string, icons : Set<string>, prefix : string, faComp
 	${faCompatibility ? '<div class="container">' : ''}
     ${faCompatibility ? Array.from(icons).map(icon => `<div class="box">
         <div class="box__glyph">
-			<i class="fa fa-${icon}"></i>
+			<i class="fa fa-${icon.replace(/_/g, "-")}"></i>
 		</div>
-        <div class="box__label">fa-${icon}</div>
+        <div class="box__label">fa-${icon.replace(/_/g, "-")}</div>
     </div>`).join('') : ''}
 	${faCompatibility ? '</div>' : ''}
 

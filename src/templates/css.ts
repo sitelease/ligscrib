@@ -354,11 +354,11 @@ ${faUtility ? `
 ` : ''}
 /* Icon Classes */
 ${faCompatibility ? Array.from(icons).map(icon => `
-    .fa-${icon}:before, .${prefix}-${icon}:before {
-        --i: "${icon}";
-    }`).join('') : Array.from(icons).map(icon => `
-    .${prefix}-${icon}:before {
-        --i: "${icon}";
-    }`).join('')}
+.fa-${icon.replace(/_/g, "-")}:before, .${prefix}-${icon.replace(/_/g, "-")}:before {
+    --i: "${icon}";
+}`).join('') : Array.from(icons).map(icon => `
+.${prefix}-${icon.replace(/_/g, "-")}:before {
+    --i: "${icon}";
+}`).join('')}
 `
 }
