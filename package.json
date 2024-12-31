@@ -1,6 +1,6 @@
 {
   "name": "@sitelease/ligscrib",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Ligature icon font generator with font awesome compatibility",
   "keywords": [
     "icon",

@@ -24,9 +24,9 @@ export function css(name : string, types : Set<string>, icons : Set<string>, pre
     font-style: normal;
     font-display: block;
 }
-.${prefix}
+.${prefix},
 .${prefix}--before::before,
-.${prefix}--after::after,${faCompatibility ? `,
+.${prefix}--after::after${faCompatibility ? `,
 .fas,
 .far,
 .fab,
