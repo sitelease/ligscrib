@@ -22,8 +22,11 @@ export function css(name : string, types : Set<string>, icons : Set<string>, pre
     src: ${src.join(',\n         ')};
     font-weight: normal;
     font-style: normal;
+    font-display: block;
 }
-.${prefix}${faCompatibility ? `,
+.${prefix}
+.${prefix}--before::before,
+.${prefix}--after::after,${faCompatibility ? `,
 .fas,
 .far,
 .fab,
@@ -31,7 +34,7 @@ export function css(name : string, types : Set<string>, icons : Set<string>, pre
 .fa-regular,
 .fa-brands,
 .fa` : ''} {
-    /* use !important to prevent issues with browser extensions that change fonts */
+  /* use !important to prevent issues with browser extensions that change fonts */
 	font-family: '${name}' !important;
 	display: inline-block;
 	speak: none;
@@ -40,16 +43,17 @@ export function css(name : string, types : Set<string>, icons : Set<string>, pre
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-wrap: nowrap;
 
 	/* Enable Ligatures ================ */
 	letter-spacing: 0;
-	-moz-font-feature-settings: "liga";
 	font-feature-settings: "liga";
-	-webkit-font-variant-ligatures: discretionary-ligatures;
 	font-variant-ligatures: discretionary-ligatures;
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;  
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .${prefix}::before${faCompatibility ? `,
