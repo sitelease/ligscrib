@@ -54,31 +54,45 @@ $ ligscrip raw-icons/* --out-dir out --example
 
 ```
 
-## Publish a new version
+## Publish a new package version
 
 After you are done making changes, create a new commit and push it to Github.
 
 Next run the build command to prepare the typescript for publishing:
 
-```cmd
+```bash
 npm run build
 ```
 
 Then use NPM's version command to create a new patch release:
-```cmd
+```bash
 npm version patch
 ```
 
 Publish the new version to NPM:
-```
+```bash
 npm publish
 ```
 
 And lastly, push up the newly created commits and tags to Github:
-```
+```bash
 git push
 git push --tags
 ```
+
+## Update package locally
+
+Now that you have your new changes up on NPMs repository you'll want to update your local machine.
+
+To do so, run the npm update command:
+```bash
+npm update -g @sitelease/ligscrib
+```
+
+That's it!
+
+**Tip:** You can check the current version of the package using `npm view @sitelease/ligscrib version`
+
 ## References
 
 - [svgicons2svgfont](https://www.npmjs.com/package/svgicons2svgfont)
