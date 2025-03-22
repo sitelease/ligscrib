@@ -12,7 +12,8 @@ ${iconDashed}:
     free:
     - family: classic
       style: solid
-  label: ${iconLabel.charAt(0).toUpperCase()}${iconLabel.slice(1)}`);
+  label: ${iconLabel.charAt(0).toUpperCase()}${iconLabel.slice(1)}
+  selectors: ${iconSelectors}`);
   }
 
   return yaml.join('');
