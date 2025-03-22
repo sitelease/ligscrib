@@ -54,6 +54,31 @@ $ ligscrip raw-icons/* --out-dir out --example
 
 ```
 
+## Publish a new version
+
+After you are done making changes, create a new commit and push it to Github.
+
+Next run the build command to prepare the typescript for publishing:
+
+```cmd
+npm run build
+```
+
+Then use NPM's version command to create a new patch release:
+```cmd
+npm version patch
+```
+
+Publish the new version to NPM:
+```
+npm publish
+```
+
+And lastly, push up the newly created commits and tags to Github:
+```
+git push
+git push --tags
+```
 ## References
 
 - [svgicons2svgfont](https://www.npmjs.com/package/svgicons2svgfont)
