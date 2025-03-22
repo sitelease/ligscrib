@@ -359,7 +359,7 @@ ${faUtility ? `
 /* Icon Classes */
 ${Array.from(icons).map(icon => `
 ${icon[1]} {
-    --i: "${icon}";
+    --i: "${icon[0]}";
 }`).join('')}
 `
 }
