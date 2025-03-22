@@ -1,4 +1,4 @@
-export function css(name : string, types : Set<string>, icons : Set<string>, prefix : string, faCompatibility ?: boolean, faUtility ?: boolean) : string {
+export function css(name : string, types : Set<string>, icons : Map<string, string>, prefix : string, faCompatibility ?: boolean, faUtility ?: boolean) : string {
     const src : string[] = [];
     
     if(types.has('woff2')) {
@@ -357,11 +357,8 @@ ${faUtility ? `
   color: var(--fa-inverse, #fff); }
 ` : ''}
 /* Icon Classes */
-${faCompatibility ? Array.from(icons).map(icon => `
-.fa-${icon.replace(/_/g, "-")}:before, .${prefix}-${icon.replace(/_/g, "-")}:before {
-    --i: "${icon}";
-}`).join('') : Array.from(icons).map(icon => `
-.${prefix}-${icon.replace(/_/g, "-")}:before {
+${Array.from(icons).map(icon => `
+${icon[1]} {
     --i: "${icon}";
 }`).join('')}
 `

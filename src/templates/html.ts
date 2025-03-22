@@ -1,4 +1,4 @@
-export function html(name : string, icons : Set<string>, prefix : string, faCompatibility ?: boolean, faUtility ?: boolean) {
+export function html(name : string, icons : Map<string, string>, prefix : string, faCompatibility ?: boolean, faUtility ?: boolean) {
     return `<!DOCTYPE html>
 <html>
 	<head>
@@ -17,28 +17,17 @@ export function html(name : string, icons : Set<string>, prefix : string, faComp
 		</style>
 	</head>
 	<body>
-	
-	<h1>${name}</h1>
+		
+	${faCompatibility ? `<h1>${name} (Font Awesome Compatible)</h1>` : `<h1>${name}</h1>`}
 
 	<div class="container">
     ${Array.from(icons).map(icon => `<div class="box">
         <div class="box__glyph ${prefix}">
-			<i class="${prefix} ${prefix}-${icon.replace(/_/g, "-")}"></i>
+			<i class="${faCompatibility ? 'fa' : prefix} ${faCompatibility ? 'fa' : prefix}-${icon[0].replace(/_/g, "-")}"></i>
 		</div>
-        <div class="box__label">${prefix} ${prefix}-${icon.replace(/_/g, "-")}</div>
+        <div class="box__label">${faCompatibility ? 'fa' : prefix} ${faCompatibility ? 'fa' : prefix}-${icon[0].replace(/_/g, "-")}</div>
     </div>`).join('')}
-	</div>
-	
-	${faCompatibility ? `<h1>${name} - Using Font Awesome Classes</h1>` : ''}
-	
-	${faCompatibility ? '<div class="container">' : ''}
-    ${faCompatibility ? Array.from(icons).map(icon => `<div class="box">
-        <div class="box__glyph">
-			<i class="fa fa-${icon.replace(/_/g, "-")}"></i>
-		</div>
-        <div class="box__label">fa-${icon.replace(/_/g, "-")}</div>
-    </div>`).join('') : ''}
-	${faCompatibility ? '</div>' : ''}
+	</div>	
 
 	${faUtility ? `<h1>${name} - Rotate Utility Classes</h1>` : ''}
 	${faUtility ? '<div class="container">' : ''}

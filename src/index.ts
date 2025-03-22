@@ -16,7 +16,7 @@ import { css } from './templates/css';
 import { scss } from './templates/scss';
 import { html } from './templates/html';
 import { convertSvgToTtf, convertTtf2Woff, convertTtf2Woff2 } from './converter';
-import { normalizeName, resolveInputGlobs } from './utils';
+import { generateIconSelectors, normalizeName, resolveInputGlobs } from './utils';
 
 // re-export
 export * from './args';
@@ -54,11 +54,13 @@ export async function main(argv = process.argv) {
             svgStream.on('finish', resolve).on('error', reject);
         });
         
-        const icons = new Set<string>();
+        const icons = new Map<string, string>();
         
         for(const file of files) {
             const ext = path.extname(file);
             const filename = path.basename(file, ext);
+            const faCompatibility = args.faIconClasses ?? false;
+            const iconSelectors = generateIconSelectors(filename, args.prefix, faCompatibility);
             const name = normalizeName(filename);
             if(!/^\.svg$/i.test(ext)) {
                 throw new Error(`Only SVG allowed, "${file}" given`.red);
@@ -76,7 +78,7 @@ export async function main(argv = process.argv) {
                 name
             };
     
-            icons.add(name);
+            icons.set(name, iconSelectors);
             fontStream.write(stream);
         }
     
