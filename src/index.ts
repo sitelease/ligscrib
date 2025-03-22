@@ -15,6 +15,7 @@ import { getArgs } from './args';
 import { css } from './templates/css';
 import { scss } from './templates/scss';
 import { html } from './templates/html';
+import { yaml } from './templates/yaml';
 import { convertSvgToTtf, convertTtf2Woff, convertTtf2Woff2 } from './converter';
 import { generateIconSelectors, normalizeName, resolveInputGlobs } from './utils';
 
@@ -138,6 +139,12 @@ export async function main(argv = process.argv) {
         if(args.example) {
             rlog('Write html... ');
             await fsp.writeFile(path.join(args.outDir, `demo.html`), html(args.name, icons, args.prefix, args.faIconClasses, args.faUtilityClasses));
+            rlog('\u2714\n'.green);
+        }
+    
+        if(args.yaml) {
+            rlog('Write yaml... ');
+            await fsp.writeFile(path.join(args.outDir, `icon-families.yml`), yaml(icons));
             rlog('\u2714\n'.green);
         }
         
