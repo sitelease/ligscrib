@@ -19,7 +19,9 @@ export function normalizeName(name : string) {
 export function generateIconSelectors(filename : string, prefix : string, faCompatibility: boolean) {   
     let selectors = filename.toLowerCase().split("_");
     if (faCompatibility) {
-        selectors = selectors.map(selector => `.fa-${selector}:before, .${prefix}-${selector}:before`);
+        // This was the old version. We changed this due to the file size
+        // selectors = selectors.map(selector => `.fa-${selector}:before, .${prefix}-${selector}:before`);
+        selectors = selectors.map(selector => `.fa-${selector}:before`);
     } else {
         selectors = selectors.map(selector => `.${prefix}-${selector}:before`);
     }

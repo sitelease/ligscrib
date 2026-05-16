@@ -31,7 +31,7 @@ export function html(name : string, icons : Map<string, string>, prefix : string
 
 	${faUtility ? `<h1>${name} - Rotate Utility Classes</h1>` : ''}
 	${faUtility ? '<div class="container">' : ''}
-	${faUtility ? ['rotate-90', 'rotate-180', 'rotate-270', 'flip-horizontal', 'flip-vertical', 'flip-both', ].map(util => `<div class="box">
+	${faUtility ? ['rotate-90', 'rotate-180', 'rotate-270', 'flip-horizontal', 'flip-vertical',].map(util => `<div class="box">
         <div class="box__glyph">
 			<i class="fa fa-bullhorn fa-${util}"></i>
 		</div>
@@ -41,7 +41,7 @@ export function html(name : string, icons : Map<string, string>, prefix : string
 	
 	${faUtility ? `<h1>${name} - Animate Utility Classes</h1>` : ''}
 	${faUtility ? '<div class="container">' : ''}
-	${faUtility ? ['beat', 'bounce', 'fade', 'beat-fade', 'flip', 'spin', 'shake',].map(util => `<div class="box">
+	${faUtility ? ['spin', 'spin fa-spin-reverse',].map(util => `<div class="box">
         <div class="box__glyph">
 			<i class="fa fa-bullhorn fa-${util}"></i>
 		</div>
